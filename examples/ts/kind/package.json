@@ -1,0 +1,11 @@
+{
+    "name": "kind",
+    "main": "index.ts",
+    "devDependencies": {
+        "@types/node": "^16"
+    },
+    "dependencies": {
+        "@starton-iounix/kind": "^1.0.4",
+        "@pulumi/pulumi": "^3.0.0"
+    }
+}

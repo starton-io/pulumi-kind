@@ -1,0 +1,536 @@
+{
+    "name": "kind",
+    "displayName": "Kind",
+    "description": "A Pulumi package for creating and managing kind cloud resources.",
+    "keywords": [
+        "pulumi",
+        "kind",
+        "kubernetes",
+        "category/cloud"
+    ],
+    "homepage": "https://www.pulumi.com",
+    "license": "Apache-2.0",
+    "attribution": "This Pulumi package is based on the [`kind` Terraform Provider](https://github.com/tehcyx/terraform-provider-kind).",
+    "repository": "https://github.com/starton-io/pulumi-kind",
+    "logoUrl": "https://raw.githubusercontent.com/starton-io/pulumi-kind/master/assets/starton.png",
+    "pluginDownloadURL": "github://api.github.com/starton-io",
+    "publisher": "starton",
+    "meta": {
+        "moduleFormat": "(.*)(?:/[^/]*)"
+    },
+    "language": {
+        "csharp": {
+            "compatibility": "tfbridge20",
+            "namespaces": null,
+            "packageReferences": {
+                "Pulumi": "3.*"
+            },
+            "rootNamespace": "starton"
+        },
+        "go": {
+            "generateExtraInputTypes": true,
+            "generateResourceContainerTypes": true,
+            "importBasePath": "github.com/starton-io/pulumi-kind/sdk/go/kind"
+        },
+        "nodejs": {
+            "compatibility": "tfbridge20",
+            "dependencies": {
+                "@pulumi/pulumi": "^3.0.0"
+            },
+            "devDependencies": {
+                "@types/mime": "^2.0.0",
+                "@types/node": "^10.0.0"
+            },
+            "disableUnionOutputTypes": true,
+            "packageDescription": "A Pulumi package for creating and managing kind cloud resources.",
+            "packageName": "@starton/pulumi-kind",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/tehcyx/terraform-provider-kind)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-kind` repo](https://github.com/starton-io/pulumi-kind/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-kind` repo](https://github.com/tehcyx/terraform-provider-kind/issues).",
+            "typescriptVersion": ""
+        },
+        "python": {
+            "compatibility": "tfbridge20",
+            "packageName": "starton_kind",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/tehcyx/terraform-provider-kind)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-kind` repo](https://github.com/starton-io/pulumi-kind/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-kind` repo](https://github.com/tehcyx/terraform-provider-kind/issues).",
+            "requires": {
+                "pulumi": "\u003e=3.0.0,\u003c4.0.0"
+            }
+        }
+    },
+    "config": {},
+    "types": {
+        "kind:index/ClusterKindConfig:ClusterKindConfig": {
+            "properties": {
+                "apiVersion": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    },
+                    "willReplaceOnChanges": true
+                },
+                "containerdConfigPatches": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    },
+                    "willReplaceOnChanges": true
+                },
+                "featureGates": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    },
+                    "willReplaceOnChanges": true
+                },
+                "kind": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    },
+                    "willReplaceOnChanges": true
+                },
+                "networking": {
+                    "$ref": "#/types/kind:index/ClusterKindConfigNetworking:ClusterKindConfigNetworking",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    },
+                    "willReplaceOnChanges": true
+                },
+                "nodes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/kind:index/ClusterKindConfigNode:ClusterKindConfigNode"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    },
+                    "willReplaceOnChanges": true
+                },
+                "runtimeConfig": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    },
+                    "willReplaceOnChanges": true
+                }
+            },
+            "type": "object",
+            "required": [
+                "apiVersion",
+                "kind"
+            ]
+        },
+        "kind:index/ClusterKindConfigNetworking:ClusterKindConfigNetworking": {
+            "properties": {
+                "apiServerAddress": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    },
+                    "willReplaceOnChanges": true
+                },
+                "apiServerPort": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    },
+                    "willReplaceOnChanges": true
+                },
+                "disableDefaultCni": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    },
+                    "willReplaceOnChanges": true
+                },
+                "dnsSearches": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    },
+                    "willReplaceOnChanges": true
+                },
+                "ipFamily": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    },
+                    "willReplaceOnChanges": true
+                },
+                "kubeProxyMode": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    },
+                    "willReplaceOnChanges": true
+                },
+                "podSubnet": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    },
+                    "willReplaceOnChanges": true
+                },
+                "serviceSubnet": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    },
+                    "willReplaceOnChanges": true
+                }
+            },
+            "type": "object"
+        },
+        "kind:index/ClusterKindConfigNode:ClusterKindConfigNode": {
+            "properties": {
+                "extraMounts": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/kind:index/ClusterKindConfigNodeExtraMount:ClusterKindConfigNodeExtraMount"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    },
+                    "willReplaceOnChanges": true
+                },
+                "extraPortMappings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/kind:index/ClusterKindConfigNodeExtraPortMapping:ClusterKindConfigNodeExtraPortMapping"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    },
+                    "willReplaceOnChanges": true
+                },
+                "image": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    },
+                    "willReplaceOnChanges": true
+                },
+                "kubeadmConfigPatches": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    },
+                    "willReplaceOnChanges": true
+                },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    },
+                    "willReplaceOnChanges": true
+                },
+                "role": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    },
+                    "willReplaceOnChanges": true
+                }
+            },
+            "type": "object"
+        },
+        "kind:index/ClusterKindConfigNodeExtraMount:ClusterKindConfigNodeExtraMount": {
+            "properties": {
+                "containerPath": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    },
+                    "willReplaceOnChanges": true
+                },
+                "hostPath": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    },
+                    "willReplaceOnChanges": true
+                },
+                "propagation": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    },
+                    "willReplaceOnChanges": true
+                },
+                "readOnly": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    },
+                    "willReplaceOnChanges": true
+                },
+                "selinuxRelabel": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    },
+                    "willReplaceOnChanges": true
+                }
+            },
+            "type": "object"
+        },
+        "kind:index/ClusterKindConfigNodeExtraPortMapping:ClusterKindConfigNodeExtraPortMapping": {
+            "properties": {
+                "containerPort": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    },
+                    "willReplaceOnChanges": true
+                },
+                "hostPort": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    },
+                    "willReplaceOnChanges": true
+                },
+                "listenAddress": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    },
+                    "willReplaceOnChanges": true
+                },
+                "protocol": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    },
+                    "willReplaceOnChanges": true
+                }
+            },
+            "type": "object"
+        }
+    },
+    "provider": {
+        "description": "The provider type for the kind package. By default, resources use package-wide configuration\nsettings, however an explicit `Provider` instance may be created and passed during resource\nconstruction to achieve fine-grained programmatic control over provider settings. See the\n[documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.\n"
+    },
+    "resources": {
+        "kind:index/cluster:Cluster": {
+            "properties": {
+                "clientCertificate": {
+                    "type": "string",
+                    "description": "Client certificate for authenticating to cluster.\n"
+                },
+                "clientKey": {
+                    "type": "string",
+                    "description": "Client key for authenticating to cluster.\n"
+                },
+                "clusterCaCertificate": {
+                    "type": "string",
+                    "description": "Client verifies the server certificate with this CA cert.\n"
+                },
+                "completed": {
+                    "type": "boolean",
+                    "description": "Cluster successfully created.\n"
+                },
+                "endpoint": {
+                    "type": "string",
+                    "description": "Kubernetes APIServer endpoint.\n"
+                },
+                "kindConfig": {
+                    "$ref": "#/types/kind:index/ClusterKindConfig:ClusterKindConfig",
+                    "description": "The kind_config that kind will use.\n"
+                },
+                "kubeconfig": {
+                    "type": "string",
+                    "description": "The kubeconfig for the cluster after it is created\n",
+                    "secret": true
+                },
+                "kubeconfigPath": {
+                    "type": "string",
+                    "description": "kubeconfig path set after the the cluster is created or by the user to override defaults.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The kind name that is given to the created cluster.\n"
+                },
+                "nodeImage": {
+                    "type": "string",
+                    "description": "The node_image that kind will use (ex: kindest/node:v1.27.1).\n"
+                },
+                "waitForReady": {
+                    "type": "boolean",
+                    "description": "Defines wether or not the provider will wait for the control plane to be ready. Defaults to false.\n"
+                }
+            },
+            "required": [
+                "clientCertificate",
+                "clientKey",
+                "clusterCaCertificate",
+                "completed",
+                "endpoint",
+                "kubeconfig",
+                "kubeconfigPath",
+                "name",
+                "nodeImage"
+            ],
+            "inputProperties": {
+                "kindConfig": {
+                    "$ref": "#/types/kind:index/ClusterKindConfig:ClusterKindConfig",
+                    "description": "The kind_config that kind will use.\n",
+                    "willReplaceOnChanges": true
+                },
+                "kubeconfigPath": {
+                    "type": "string",
+                    "description": "kubeconfig path set after the the cluster is created or by the user to override defaults.\n",
+                    "willReplaceOnChanges": true
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The kind name that is given to the created cluster.\n",
+                    "willReplaceOnChanges": true
+                },
+                "nodeImage": {
+                    "type": "string",
+                    "description": "The node_image that kind will use (ex: kindest/node:v1.27.1).\n",
+                    "willReplaceOnChanges": true
+                },
+                "waitForReady": {
+                    "type": "boolean",
+                    "description": "Defines wether or not the provider will wait for the control plane to be ready. Defaults to false.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Cluster resources.\n",
+                "properties": {
+                    "clientCertificate": {
+                        "type": "string",
+                        "description": "Client certificate for authenticating to cluster.\n"
+                    },
+                    "clientKey": {
+                        "type": "string",
+                        "description": "Client key for authenticating to cluster.\n"
+                    },
+                    "clusterCaCertificate": {
+                        "type": "string",
+                        "description": "Client verifies the server certificate with this CA cert.\n"
+                    },
+                    "completed": {
+                        "type": "boolean",
+                        "description": "Cluster successfully created.\n"
+                    },
+                    "endpoint": {
+                        "type": "string",
+                        "description": "Kubernetes APIServer endpoint.\n"
+                    },
+                    "kindConfig": {
+                        "$ref": "#/types/kind:index/ClusterKindConfig:ClusterKindConfig",
+                        "description": "The kind_config that kind will use.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "kubeconfig": {
+                        "type": "string",
+                        "description": "The kubeconfig for the cluster after it is created\n",
+                        "secret": true
+                    },
+                    "kubeconfigPath": {
+                        "type": "string",
+                        "description": "kubeconfig path set after the the cluster is created or by the user to override defaults.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The kind name that is given to the created cluster.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "nodeImage": {
+                        "type": "string",
+                        "description": "The node_image that kind will use (ex: kindest/node:v1.27.1).\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "waitForReady": {
+                        "type": "boolean",
+                        "description": "Defines wether or not the provider will wait for the control plane to be ready. Defaults to false.\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        }
+    }
+}
