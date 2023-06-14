@@ -1,10 +1,10 @@
 ---
-title: Starton
+title: Kins
 meta_desc: Provides an overview of the Kind Provider for Pulumi.
 layout: overview
 ---
 
-The [Starton](https://starton.com/) provider for Pulumi can be used to provision any of the cloud resources available in Pulumi.
+The [Kind](https://kind.sigs.k8s.io/docs/user/quick-start/) provider for Pulumi can be used to provision any of the cloud resources available in Pulumi.
 The Kind provider can be use without any configuration.
 
 ## Example
@@ -13,7 +13,7 @@ The Kind provider can be use without any configuration.
 {{% choosable language typescript %}}
 
 ```typescript
-import * as kindcluster from "@starton/kind";
+import * as kindcluster from "@starton/pulumi-kind";
 const instanceKube = new kindcluster.Cluster("test", {
 	kindConfig: {
 		apiVersion: "kind.x-k8s.io/v1alpha4",
@@ -70,37 +70,45 @@ apiServer:
 {{% choosable language go %}}
 
 ```go
+
 import (
-	"fmt"
-	scaleway "github.com/lbrlabs/pulumi-scaleway/sdk/go/scaleway"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/starton-io/pulumi-kind/sdk/go/kind"
 )
 
 func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
-
-		publicIp, err := scaleway.NewInstanceIp(ctx, "example", &scaleway.InstanceIpArgs{})
-		if err != nil {
-			return fmt.Errorf("error creating public IP: %v", err)
-		}
-
-		server, err := scaleway.NewInstanceServer(ctx, "example", &scaleway.InstanceServerArgs{
-			Image: pulumi.String("ubuntu_focal"),
-			IpId:  publicIp.ID(),
-			Type:  pulumi.String("DEV1-S"),
-			Tags: pulumi.StringArray{
-				pulumi.String("go"),
+		kind, err := kind.NewCluster(ctx, "test", &kind.ClusterArgs{
+			KindConfig: kind.ClusterKindConfigArgs{
+				ApiVersion: pulumi.String("kind.x-k8s.io/v1alpha4"),
+				Kind:       pulumi.String("Cluster"),
+				Nodes: &kind.ClusterKindConfigNodeArray{
+					kind.ClusterKindConfigNodeArgs{
+						Role: pulumi.String("control-plane"),
+						KubeadmConfigPatches: pulumi.StringArray{
+							pulumi.String(`kind: ClusterConfiguration
+apiServer:
+  extraArgs:
+    "service-node-port-range": "80-32100"`),
+						},
+					},
+					kind.ClusterKindConfigNodeArgs{
+						Role: pulumi.String("worker"),
+					},
+					kind.ClusterKindConfigNodeArgs{
+						Role: pulumi.String("worker"),
+					},
+				},
 			},
 		})
 		if err != nil {
-			return fmt.Errorf("error creating instance server: %v", err)
+			return err
 		}
-
-		ctx.Export("server", server.Name)
-
+		ctx.Export("status", kind.Completed)
 		return nil
 	})
 }
+
 ```
 
 {{% /choosable %}}

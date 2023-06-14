@@ -1,12 +1,12 @@
 ---
-title: Starton/pulumi-kind Installation & Configuration
+title: Pulumi-kind Installation & Configuration
 meta_desc: Information on how to install the Kind provider.
 layout: installation
 ---
 
 ## Installation
 
-The Pulumi Kind provider is available as a package in several Pulumi languages:
+The Pulumi Kind provider made by [starton](https://www.starton.com/) is available as a package in several Pulumi languages:
 
 * JavaScript/TypeScript: [`@starton/pulumi-kind`](https://www.npmjs.com/package/@starton/pulumi-kind)
 * Go: [`github.com/starton-io/pulumi-kind/sdk/go/`](https://pkg.go.dev/github.com/starton-io/pulumi-kind/sdk)
